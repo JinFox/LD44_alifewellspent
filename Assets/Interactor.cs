@@ -27,7 +27,7 @@ public class Interactor : MonoBehaviour
         {
             dollar.transform.Rotate(Vector3.up, -1f);
 
-            if (Input.GetKeyDown(KeyCode.Space) || GameManager.Instance.buttonMashed) ButtonMashed();
+            if (Input.GetKeyDown(KeyCode.Space)) ButtonMashed();
 
         }
     }

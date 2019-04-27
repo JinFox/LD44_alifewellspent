@@ -14,8 +14,8 @@ public class GameManager : MonoBehaviour
     public int finalAge = 80;
     public float timePerYear = 1f;
 
-    public bool buttonMashed = false;
 
+    [SerializeField] Transform li;
     [SerializeField]
     Minigame[] minigames;
 
@@ -73,6 +73,8 @@ public class GameManager : MonoBehaviour
         if (timerUntilNextAge <= 0f) {
             timerUntilNextAge = timePerYear;
             this.currentScore.age++;
+            // here is the deeply metaphorical sunset:
+            li.Rotate(Vector3.left, 0.53f);
             UpdateScores();
         }
         timerUntilNextAge -= Time.deltaTime;
@@ -99,4 +101,6 @@ public class GameManager : MonoBehaviour
     {
         
     }
+
+
 }
