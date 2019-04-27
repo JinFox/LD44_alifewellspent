@@ -10,6 +10,7 @@ public class Interactor : MonoBehaviour
     [SerializeField] Transform button;
     private bool playerInRange = false;
     [SerializeField] ParticleSystem burst;
+    // [SerializeField] GameManager gm; // I don't need to do this. GM is Everywhere!
 
 
     // Start is called before the first frame update
@@ -26,7 +27,7 @@ public class Interactor : MonoBehaviour
         {
             dollar.transform.Rotate(Vector3.up, -1f);
 
-            if (Input.GetKeyDown(KeyCode.Space)) ButtonMashed();
+            if (Input.GetKeyDown(KeyCode.Space) || GameManager.Instance.buttonMashed) ButtonMashed();
 
         }
     }

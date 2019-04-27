@@ -14,6 +14,8 @@ public class GameManager : MonoBehaviour
     public int finalAge = 80;
     public float timePerYear = 1f;
 
+    public bool buttonMashed = false;
+
     [SerializeField]
     Minigame[] minigames;
 
