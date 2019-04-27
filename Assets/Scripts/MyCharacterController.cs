@@ -5,10 +5,18 @@ using UnityEngine;
 public class MyCharacterController : MonoBehaviour
 {
     [SerializeField]
-    float speed;
+    float speed = 100f;
+    float runSpeedMult = 2f;
+
+    [SerializeField]
+    Animator animator;
 
     Camera _cam;
     Rigidbody _rb;
+
+    Vector3 movement;
+    private bool isRunning;
+
     private void Awake()
     {
         _cam = Camera.main;
@@ -23,9 +31,14 @@ public class MyCharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
+        _rb.velocity = movement * Time.deltaTime * speed + new Vector3(0f, _rb.velocity.y, 0f);
+    }
+    // Update is called once per frame
+    void Update()
+    {
 
         Vector3 right = _cam.transform.right;
-         right.y = 0;
+        right.y = 0;
         right.Normalize();
 
 
@@ -38,14 +51,23 @@ public class MyCharacterController : MonoBehaviour
 
         float hori = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
-        Vector3 movement = (hori * right) + (vert * forward);
-        transform.rotation = Quaternion.Euler(0, -Mathf.Atan2(movement.z, movement.x) * Mathf.Rad2Deg, 0f);
-        _rb.velocity = movement * Time.deltaTime * speed + new Vector3(0f, _rb.velocity.y, 0f);
-    }
-    // Update is called once per frame
-    void Update()
-    {
-        
+        movement = (hori * right) + (vert * forward);
+
+
+        if (Input.GetButton("Run")) {
+            movement *= runSpeedMult;
+            isRunning = true;
+        }
+        else {
+            isRunning = false;
+        }
+
+
+        if (Mathf.Abs(hori) + Mathf.Abs(vert) > 0.02f)
+            transform.rotation = Quaternion.Euler(0, -Mathf.Atan2(movement.z, movement.x) * Mathf.Rad2Deg, 0f);
+
+
+        animator.SetFloat("Speed", movement.normalized.magnitude * (isRunning? 1f : .5f));
     }
 
     private void OnValidate()
