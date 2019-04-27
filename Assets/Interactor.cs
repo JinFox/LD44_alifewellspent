@@ -5,16 +5,18 @@ using DG.Tweening;
 
 public class Interactor : MonoBehaviour
 {
-    [SerializeField] bool armed = true;
+    [SerializeField] bool armed;
     [SerializeField] Transform dollar;
     [SerializeField] Transform button;
     private bool playerInRange = false;
+    [SerializeField] ParticleSystem burst;
 
 
     // Start is called before the first frame update
     void Start()
     {
-        //DisArm();
+        DisArm();
+        Invoke("Arm", 5f);
     }
 
     // Update is called once per frame
@@ -36,7 +38,21 @@ public class Interactor : MonoBehaviour
             // add money
             // take life
             DisArm();
+            burst.gameObject.SetActive(true);
+            burst.Clear();
+            burst.Play();
+            StartCoroutine("StopBurst");
+
+            ButtonBeGone();
+            Invoke("Arm", 5f);
         }
+    }
+    IEnumerator StopBurst()
+    {
+
+        yield return new WaitForSeconds(.1f);
+        burst.Stop();
+        
     }
     public void Arm()
     {
@@ -56,6 +72,7 @@ public class Interactor : MonoBehaviour
         playerInRange = true;
         if (armed) button.transform.DOMoveX(800, 1); // button.transform.DOMove(200,1); // ok, no tweens for you.
         // This will end up in tears should we change resolution, but I have no time to understand the damn thing.
+        // button woint appear if the plr remain in the collider. we\'ll work on it some day.
         Debug.Log("Collided with " + other.tag);
     }
 
@@ -63,7 +80,13 @@ public class Interactor : MonoBehaviour
     {
         // and here
         playerInRange = false;
-        if (armed) button.transform.DOMoveX(1600, 1); // yeehaw!
+        if (armed) ButtonBeGone();
         Debug.Log("Collision ceased with " + other.tag);
+    }
+
+    void ButtonBeGone()
+    {
+        button.transform.DOMoveX(1600, 1); // yeehaw!
+
     }
 }
