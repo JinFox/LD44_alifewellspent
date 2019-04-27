@@ -41,6 +41,7 @@ public abstract class Minigame : MonoBehaviour
     public virtual void DisableMinigameObject()
     {
         this.onMinigameFinished = null;
+        this.gameObject.SetActive(false);
     }
     
 }
