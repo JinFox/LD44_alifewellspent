@@ -14,10 +14,10 @@ OcclusionCullingSettings:
 RenderSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 9
-  m_Fog: 1
+  m_Fog: 0
   m_FogColor: {r: 0.65080994, g: 0.666729, b: 0.7075472, a: 1}
   m_FogMode: 3
-  m_FogDensity: 0.05
+  m_FogDensity: 0.002
   m_LinearFogStart: 0
   m_LinearFogEnd: 300
   m_AmbientSkyColor: {r: 0.212, g: 0.227, b: 0.259, a: 1}
@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 2138677392}
-  m_IndirectSpecularColor: {r: 0.28510836, g: 0.3713663, b: 0.49498215, a: 1}
+  m_IndirectSpecularColor: {r: 0.285216, g: 0.3707158, b: 0.48871678, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -19514,33 +19514,17 @@ MonoBehaviour:
     areaError: 15
   asset_guid: 
   dontDestroyMeshOnDelete: 0
-  m_selectedFaces: 15010000190100001a010000
+  m_selectedFaces: 55000000
   m_SelectedEdges:
-  - x: 1152
-    y: 1153
-  - x: 1154
-    y: 1152
-  - x: 1153
-    y: 1155
-  - x: 1155
-    y: 1154
-  - x: 1168
-    y: 1169
-  - x: 1170
-    y: 1168
-  - x: 1169
-    y: 1171
-  - x: 1171
-    y: 1170
-  - x: 1172
-    y: 1173
-  - x: 1174
-    y: 1172
-  - x: 1173
-    y: 1175
-  - x: 1175
-    y: 1174
-  m_selectedTriangles: 800400008104000082040000810400008304000082040000900400009104000092040000910400009304000092040000940400009504000096040000950400009704000096040000
+  - x: 340
+    y: 341
+  - x: 342
+    y: 340
+  - x: 341
+    y: 343
+  - x: 343
+    y: 342
+  m_selectedTriangles: 540100005501000056010000550100005701000056010000
 --- !u!114 &1798486281
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19804,7 +19788,7 @@ Light:
   serializedVersion: 9
   m_Type: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Intensity: 2
+  m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
   m_InnerSpotAngle: 21.802082
@@ -19843,13 +19827,13 @@ Light:
     serializedVersion: 2
     m_Bits: 4294967295
   m_RenderingLayerMask: 1
-  m_Lightmapping: 1
+  m_Lightmapping: 4
   m_LightShadowCasterMode: 0
   m_AreaSize: {x: 1, y: 1}
   m_BounceIntensity: 1
   m_ColorTemperature: 6570
   m_UseColorTemperature: 0
-  m_BoundingSphereOverride: {x: 0, y: -7.383556e+17, z: 8.98e-43, w: -6.690715e+17}
+  m_BoundingSphereOverride: {x: 2, y: 2, z: 2, w: 4.0178e-41}
   m_UseBoundingSphereOverride: 0
   m_ShadowRadius: 0
   m_ShadowAngle: 0
@@ -19860,10 +19844,10 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2138677391}
-  m_LocalRotation: {x: -0.83372647, y: -0.061140582, z: -0.33086264, w: -0.43782645}
-  m_LocalPosition: {x: 0.24, y: 3, z: 4.18}
+  m_LocalRotation: {x: 0.296459, y: 0.35521147, z: -0.1198892, w: 0.8783869}
+  m_LocalPosition: {x: -2.6062036, y: 9.814299, z: -21.991486}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: -223.598, y: -56.692993, z: -32.740997}
+  m_LocalEulerAnglesHint: {x: -197.454, y: -165.65, z: -168.814}
