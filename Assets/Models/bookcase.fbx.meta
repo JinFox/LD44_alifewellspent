@@ -1,5 +1,5 @@
 fileFormatVersion: 2
-guid: dfee1b2b0b471734e9144380c10941a1
+guid: 8582ff290dac8394abe35e5b21e85263
 ModelImporter:
   serializedVersion: 25
   internalIDToNameTable: []
@@ -40,8 +40,8 @@ ModelImporter:
     useSRGBMaterialColor: 1
     importVisibility: 1
     importBlendShapes: 1
-    importCameras: 0
-    importLights: 0
+    importCameras: 1
+    importLights: 1
     swapUVChannels: 0
     generateSecondaryUV: 0
     useFileUnits: 1
@@ -66,11 +66,7 @@ ModelImporter:
     legacyComputeAllNormalsFromSmoothingGroupsWhenMeshHasBlendShapes: 0
     blendShapeNormalImportMode: 1
     normalSmoothingSource: 0
-  referencedClips:
-  - 4ed578efc4ac1624b9940ebc4355e47d
-  - c6c76206cb11a604a81da003ea9b4145
-  - 087189d1a6246ce489580c3e737c9259
-  - 671c51ed19fd72d4980885d7025fdbb4
+  referencedClips: []
   importAnimation: 1
   copyAvatar: 0
   humanDescription:
