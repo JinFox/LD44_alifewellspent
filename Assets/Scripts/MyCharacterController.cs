@@ -31,12 +31,16 @@ public class MyCharacterController : MonoBehaviour
 
     private void FixedUpdate()
     {
-        _rb.velocity = movement * Time.deltaTime * speed + new Vector3(0f, _rb.velocity.y, 0f);
+        if (!GameManager.Instance.InAMinigame()) {
+            _rb.velocity = movement * Time.deltaTime * speed + new Vector3(0f, _rb.velocity.y, 0f);
+        }
     }
     // Update is called once per frame
     void Update()
     {
-
+        if (GameManager.Instance.InAMinigame()) {
+            return ;
+        }
         Vector3 right = _cam.transform.right;
         right.y = 0;
         right.Normalize();
@@ -66,7 +70,6 @@ public class MyCharacterController : MonoBehaviour
         if (Mathf.Abs(hori) + Mathf.Abs(vert) > 0.02f)
             transform.rotation = Quaternion.Euler(0, -Mathf.Atan2(movement.z, movement.x) * Mathf.Rad2Deg, 0f);
 
-
         animator.SetFloat("Speed", movement.normalized.magnitude * (isRunning? 1f : .5f));
     }
 
@@ -82,7 +85,6 @@ public class MyCharacterController : MonoBehaviour
         Vector3 right = _cam.transform.right;
         right.y = 0;
         right.Normalize();
-
 
         Vector3 forward = _cam.transform.forward;
         forward.y = 0;

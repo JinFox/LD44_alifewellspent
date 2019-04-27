@@ -18,30 +18,16 @@ public class ScorePanel : MonoBehaviour
             Instance = this;
         }
     }
-    int _profit;
-    public int Profit
+    public void SetProfit(int profit)
     {
-        get { return _profit; }
-        set
-        {
-            if (value != _profit) {
-                _profit = value;
-                profitPanel.text = profitPanelPrefix + value;
-            }
-        }
+        profitPanel.text = profitPanelPrefix + profit;
     }
 
-    int _age;
-    public int Age
+   
+    public void SetAge(int age)
     {
-        get { return _age; }
-        set
-        {
-            if (value != _age) {
-                _age = value;
-                agePanel.text = agePanelPrefix + value;
-            }
-        }
+        agePanel.text = agePanelPrefix + age;
+            
      }
 
 }
