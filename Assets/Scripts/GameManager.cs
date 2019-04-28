@@ -13,9 +13,10 @@ public class GameManager : MonoBehaviour
     GameReward currentScore;
 
     public int initalAge = 20;
-    public int finalAge = 22;
+    public int finalAge = 80;
     public float timePerYear = 1f;
 
+    public bool menuStage;
 
     [SerializeField] Transform li;
     [SerializeField]
@@ -27,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     public bool InAMinigame()
     {
+        
         return currentMinigame != null;
     }
 
@@ -49,6 +51,7 @@ public class GameManager : MonoBehaviour
             g.DisableMinigameObject();
         }
         UpdateScores();
+        menuStage = true;
     }
 
     public void RegisterCurrentMinigame(Minigame game)
@@ -65,7 +68,8 @@ public class GameManager : MonoBehaviour
     {
 
         if (gameOver) {
-            Debug.Log("Game ended");
+            // Debug.Log("Game ended");
+            menuStage = true;
             return ;
         }
         UpdateAge();
@@ -98,7 +102,7 @@ public class GameManager : MonoBehaviour
     {
         if (timerUntilNextAge <= 0f) {
             timerUntilNextAge = timePerYear;
-            this.currentScore.age++;
+            if (!menuStage) this.currentScore.age++;
             UpdateScores();
         }
         
@@ -139,5 +143,10 @@ public class GameManager : MonoBehaviour
         minigames[drawnIndex].EnableMinigameObject();
     }
 
+    public void StartGame()
+    {
+        menuStage = false;
+        gameOver = false;
 
+    }
 }

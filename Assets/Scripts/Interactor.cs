@@ -17,13 +17,17 @@ public class Interactor : MonoBehaviour
     private bool playerInRange = false;
     [SerializeField] ParticleSystem burst;
     // [SerializeField] GameManager gm; // I don't need to do this. GM is Everywhere!
+    private float decayRate = 0.001f;
+    private float startGreen = 1f;
+    private float startRed = 0.2f;
+    private float startBlue = 0.2f;
+    
 
 
     // Start is called before the first frame update
     void Start()
     {
-
-        hiddenPosX = 512f + 100f;
+        hiddenPosX = Screen.width + 100f; // changed from 1024f due to my screen not compatible
         visiblePosX = hiddenPosX - 300f;
 
         DisArm();
@@ -36,11 +40,16 @@ public class Interactor : MonoBehaviour
     {
         if (armed)
         {
+            // DecayDollar(); 
+            // abandoning decay work for now. when we have the time and there are multiple dollars at the same time we may consider it.
+
             dollar.transform.Rotate(Vector3.up, -rotatingSpeed * Time.deltaTime);
 
             if (Input.GetKeyDown(KeyCode.Space)) ButtonMashed();
+            
 
         }
+        
     }
 
     public void ButtonMashed() // call this by the button when it's mashed on the screen interface.
@@ -71,6 +80,7 @@ public class Interactor : MonoBehaviour
     {
         armed = true;
         dollar.GetComponent<MeshRenderer>().enabled = true;
+        RejuvenateDollar();
     }
 
     public void DisArm()
@@ -91,7 +101,7 @@ public class Interactor : MonoBehaviour
         }
         // This will end up in tears should we change resolution, but I have no time to understand the damn thing.
         // button woint appear if the plr remain in the collider. we\'ll work on it some day.
-        Debug.Log("Collided with " + other.tag);
+        // Debug.Log("Collided with " + other.tag);
     }
 
     private void OnTriggerExit(Collider other)
@@ -99,13 +109,35 @@ public class Interactor : MonoBehaviour
         // and here
         playerInRange = false;
         if (armed) ButtonBeGone();
-        Debug.Log("Collision ceased with " + other.tag);
+        // Debug.Log("Collision ceased with " + other.tag);
     }
 
     void ButtonBeGone()
     {
         DOTween.Kill(button.transform);
-        (button.transform as RectTransform).DOLocalMoveX(hiddenPosX, 0.4f); // yeehaw!
+        button.transform.DOMoveX(hiddenPosX, 0.4f); 
 
+    }
+
+    public void SetDecayRate(float dr)    {        decayRate = dr;    }
+    void DecayDollar()
+    {
+        // here we'll be changing the dollar colour with time, based on an external variable of sorts. For now we'll hardcose it as decayRate
+        Debug.Log(dollar.GetComponent<Renderer>().material.GetColor("_Color"));
+        Color c = dollar.GetComponent<Renderer>().material.GetColor("_Color");
+        dollar.GetComponent<Renderer>().material.SetColor("_Color",c - new Color(decayRate * startRed, decayRate * startGreen, decayRate * startBlue, 0f));
+        if (c == new Color(0f, 0f, 0f)) DollarLost();
+    }
+
+    void RejuvenateDollar()
+    {
+        dollar.GetComponent<Renderer>().material.color = new Color(startRed, startGreen, startBlue,1f);
+        // here we restore the dollar to its beautiful green.
+    }
+
+    void DollarLost()
+    {
+        // if dollar is decayed without collecting this happens.
+        DisArm();
     }
 }
