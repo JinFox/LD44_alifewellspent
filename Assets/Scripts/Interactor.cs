@@ -99,7 +99,7 @@ public class Interactor : MonoBehaviour
     void ButtonBeGone()
     {
         DOTween.Kill(button.transform);
-        button.transform.DOMoveX(hiddenPosX, 0.4f); // yeehaw!
+        button.transform.DOMoveX(hiddenPosX, 0.4f); 
 
     }
 }
