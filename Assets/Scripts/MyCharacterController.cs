@@ -92,8 +92,12 @@ public class MyCharacterController : MonoBehaviour
             isRunning = false;
         }
 
-        _rb.velocity = movement * Time.deltaTime * speed + new Vector3(0f, _rb.velocity.y, 0f);
+        
 
+    }
+    private void FixedUpdate()
+    {
+        _rb.velocity = movement * Time.deltaTime * speed + new Vector3(0f, _rb.velocity.y, 0f);
     }
 
     private void Update()
