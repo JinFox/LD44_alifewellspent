@@ -20,14 +20,13 @@ public struct GameReward
 
 public abstract class Minigame : MonoBehaviour
 {
-    protected Action<GameReward> onMinigameFinished;
+    public Interactor               interactor;
+    public GameReward               theReward;
 
-    
-    public virtual void LaunchMinigame(Action<GameReward> onMinigameFinished)
+    public virtual void LaunchMinigame()
     {
         //INITIALISE
 
-        this.onMinigameFinished = onMinigameFinished;
         GameManager.Instance.RegisterCurrentMinigame(this);
     }
 
@@ -36,11 +35,11 @@ public abstract class Minigame : MonoBehaviour
     public virtual void EnableMinigameObject()
     {
         gameObject.SetActive(true);
+        interactor.Arm();
     }
 
     public virtual void DisableMinigameObject()
     {
-        this.onMinigameFinished = null;
         this.gameObject.SetActive(false);
     }
     

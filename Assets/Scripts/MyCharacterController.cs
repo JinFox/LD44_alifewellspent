@@ -36,6 +36,12 @@ public class MyCharacterController : MonoBehaviour
         animator.SetBool("isDead", false);
         animator.SetBool("isTyping", false);
     }
+    public void StopWalking()
+    {
+        animator.SetFloat("Speed", 0f);
+        movement = Vector3.zero;
+        _rb.velocity = Vector3.zero;
+    }
 
     // Update is called once per frame
     public void UpdateCharacter()
@@ -44,21 +50,16 @@ public class MyCharacterController : MonoBehaviour
             animator.SetFloat("Speed", 0f);
             return ;
         }
-        Vector3 right = _cam.transform.right;
-        right.y = 0;
-        right.Normalize();
-
-
-        Vector3 forward = _cam.transform.forward;
-        forward.y = 0;
-        forward.Normalize();
-
-
-        Debug.DrawLine(transform.position, transform.position + right, Color.yellow);
-        Debug.DrawLine(transform.position, transform.position + forward, Color.blue);
-
         float hori = Input.GetAxis("Horizontal");
         float vert = Input.GetAxis("Vertical");
+
+        Vector3 right = _cam.transform.right;
+        Vector3 forward = _cam.transform.forward;
+        right.y = 0;
+        forward.y = 0;
+        right.Normalize();
+        forward.Normalize();
+
         movement = (hori * right) + (vert * forward);
 
 
@@ -72,10 +73,14 @@ public class MyCharacterController : MonoBehaviour
 
         _rb.velocity = movement * Time.deltaTime * speed + new Vector3(0f, _rb.velocity.y, 0f);
 
-        if (Mathf.Abs(hori) + Mathf.Abs(vert) > 0.08f)
-            LookToward(movement);
-        animator.SetFloat("Speed", movement.normalized.magnitude * (isRunning ? 1f : .5f));
+    }
 
+    private void Update()
+    {
+        animator.SetFloat("Speed", movement.normalized.magnitude * (isRunning ? 1f : .5f));
+        if (_rb.velocity.magnitude > 0.2f) {
+            LookToward(movement);
+        }
     }
 
     private void LookToward(Vector3 direction)

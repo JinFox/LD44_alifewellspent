@@ -6,17 +6,18 @@ using UnityEngine.UI;
 
 public class SimpleMinigame : Minigame
 {
-    public GameReward theReward;
 
     public float startTimer = 5f;
     float timer;
+   
 
-    public override void LaunchMinigame(Action<GameReward> onMinigameFinished)
+    public override void LaunchMinigame()
     {
-        base.LaunchMinigame(onMinigameFinished); // this stays
+        base.LaunchMinigame(); // this stays
         // INITIALISATION
         timer = startTimer;
-        
+
+        GameManager.Instance.thePlayer.StopWalking(); // stopping the walking animation
     }
 
     // called every frame
@@ -24,9 +25,12 @@ public class SimpleMinigame : Minigame
     {
         timer -= Time.deltaTime;
 
+        // this minigame dont allow walking so we don't update 
+        // GameManager.Instance.thePlayer.UpdateCharacter();
+
         if (timer <= 0) { // winning condition has been reached
             Debug.Log("Minigame finished");
-            this.onMinigameFinished(theReward);
+            GameManager.Instance.OnMinigameFinished(this);
         }
     }
 

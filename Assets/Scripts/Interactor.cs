@@ -5,9 +5,15 @@ using DG.Tweening;
 
 public class Interactor : MonoBehaviour
 {
+    private float hiddenPosX;
+    private float visiblePosX;
+    public float rotatingSpeed = 30f;
+
+    
     [SerializeField] bool armed;
     [SerializeField] Transform dollar;
     [SerializeField] Transform button;
+    [SerializeField] Minigame linkedGame;
     private bool playerInRange = false;
     [SerializeField] ParticleSystem burst;
     // [SerializeField] GameManager gm; // I don't need to do this. GM is Everywhere!
@@ -16,8 +22,11 @@ public class Interactor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
+        hiddenPosX = 1024f + 100f;
+        visiblePosX = hiddenPosX - 300f;
         DisArm();
-        Invoke("Arm", 5f);
+        Arm();
+       // Invoke("Arm", 5f);
     }
 
     // Update is called once per frame
@@ -25,7 +34,7 @@ public class Interactor : MonoBehaviour
     {
         if (armed)
         {
-            dollar.transform.Rotate(Vector3.up, -1f);
+            dollar.transform.Rotate(Vector3.up, -rotatingSpeed * Time.deltaTime);
 
             if (Input.GetKeyDown(KeyCode.Space)) ButtonMashed();
 
@@ -42,10 +51,11 @@ public class Interactor : MonoBehaviour
             burst.gameObject.SetActive(true);
             burst.Clear();
             burst.Play();
+            linkedGame.LaunchMinigame();
             StartCoroutine("StopBurst");
 
             ButtonBeGone();
-            Invoke("Arm", 5f);
+           // Invoke("Arm", 5f);
         }
     }
     IEnumerator StopBurst()
@@ -71,7 +81,8 @@ public class Interactor : MonoBehaviour
     {
         // I should be checking player's tag here.
         playerInRange = true;
-        if (armed) button.transform.DOMoveX(800, 1); // button.transform.DOMove(200,1); // ok, no tweens for you.
+
+        if (armed) button.transform.DOMoveX(visiblePosX, 0.4f); // button.transform.DOMove(200,1); // ok, no tweens for you.
         // This will end up in tears should we change resolution, but I have no time to understand the damn thing.
         // button woint appear if the plr remain in the collider. we\'ll work on it some day.
         Debug.Log("Collided with " + other.tag);
@@ -87,7 +98,8 @@ public class Interactor : MonoBehaviour
 
     void ButtonBeGone()
     {
-        button.transform.DOMoveX(1600, 1); // yeehaw!
+        DOTween.Kill(button.transform);
+        button.transform.DOMoveX(hiddenPosX, 0.4f); // yeehaw!
 
     }
 }

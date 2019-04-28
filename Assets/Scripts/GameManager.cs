@@ -8,11 +8,12 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public static GameManager Instance { get; private set; }
 
-    private MyCharacterController _thePlayer;
+    [HideInInspector]
+    public MyCharacterController thePlayer;
     GameReward currentScore;
 
     public int initalAge = 20;
-    public int finalAge = 80;
+    public int finalAge = 22;
     public float timePerYear = 1f;
 
 
@@ -41,12 +42,13 @@ public class GameManager : MonoBehaviour
     }
     private void Start()
     {
-        _thePlayer = FindObjectOfType<MyCharacterController>();
+        thePlayer = FindObjectOfType<MyCharacterController>();
         currentScore = new GameReward(0, 0, initalAge);
 
         foreach (Minigame g in minigames) {
             g.DisableMinigameObject();
         }
+        UpdateScores();
     }
 
     public void RegisterCurrentMinigame(Minigame game)
@@ -66,10 +68,14 @@ public class GameManager : MonoBehaviour
             Debug.Log("Game ended");
             return ;
         }
+        UpdateAge();
+
+        // Joaquim : I tried and it did not looked that good
+        //li.Rotate(Vector3.left, Time.deltaTime);
 
         if (this.currentScore.age > finalAge) {
             gameOver = true;
-            _thePlayer.Die();
+            thePlayer.Die();
         }
         timeToUpdate -= Time.deltaTime;
         if (timeToUpdate <= 0f) {
@@ -80,11 +86,12 @@ public class GameManager : MonoBehaviour
         if (currentMinigame) {
             currentMinigame.updateMinigame();
         } else {
-            _thePlayer.UpdateCharacter();
+            thePlayer.UpdateCharacter();
         }
         if (!aMinigameIsActive) {
             EnableNextMinigame();
         }
+
     }
 
     private void UpdateAge()
@@ -92,8 +99,6 @@ public class GameManager : MonoBehaviour
         if (timerUntilNextAge <= 0f) {
             timerUntilNextAge = timePerYear;
             this.currentScore.age++;
-            // here is the deeply metaphorical sunset:
-            li.Rotate(Vector3.left, 0.53f);
             UpdateScores();
         }
         
@@ -106,11 +111,11 @@ public class GameManager : MonoBehaviour
         ScorePanel.Instance.SetProfit(this.currentScore.profit);
     }
 
-    private void OnMinigameFinished(GameReward obj)
+    public void OnMinigameFinished(Minigame minigame)
     {
-        this.currentScore.age += obj.age;
-        this.currentScore.profit += obj.profit;
-        this.currentScore.enjoyment += obj.enjoyment;
+        this.currentScore.age += minigame.theReward.age;
+        this.currentScore.profit += minigame.theReward.profit;
+        this.currentScore.enjoyment += minigame.theReward.enjoyment;
         UpdateScores();
         currentMinigame.DisableMinigameObject();
         currentMinigame = null;
