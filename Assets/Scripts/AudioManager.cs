@@ -47,7 +47,7 @@ public class AudioManager : MonoBehaviour
             Instance = this;
         else
             Destroy(gameObject);
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         foreach (Sound s in sounds) {
             s.SetSource(gameObject.AddComponent<AudioSource>());
