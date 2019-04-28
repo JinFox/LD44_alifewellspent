@@ -12,6 +12,9 @@ public class MyCharacterController : MonoBehaviour
     [SerializeField]
     Animator animator;
 
+    [SerializeField] GameManager gm;
+
+
     Camera _cam;
     Rigidbody _rb;
 
@@ -71,7 +74,7 @@ public class MyCharacterController : MonoBehaviour
             isRunning = false;
         }
 
-        _rb.velocity = movement * Time.deltaTime * speed + new Vector3(0f, _rb.velocity.y, 0f);
+        if (!gm.menuStage) _rb.velocity = movement * Time.deltaTime * speed + new Vector3(0f, _rb.velocity.y, 0f);
 
     }
 
