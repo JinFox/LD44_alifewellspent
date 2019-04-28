@@ -9,17 +9,24 @@ public class BirdWatchingMinigame : Minigame
 
     public float startTimer = 30f;
     float timer;
-    [SerializeField] Camera mainCam;
-    [SerializeField] Camera bwCam;
+    [SerializeField] Cinemachine.CinemachineVirtualCamera mainCam;
+    // [SerializeField] Camera bwCam;
+    [SerializeField] Cinemachine.CinemachineVirtualCamera bwCam;
     [SerializeField] Transform sky0;
     [SerializeField] Transform sky1;
     [SerializeField] Transform birds;
-
+    private Animation anim;
 
     public override void LaunchMinigame()
     {
+        anim = birds.GetComponent<Animation>();
+        anim.Play();
         base.LaunchMinigame(); // this stays
         // INITIALISATION
+        GameReward rew = TheReward;
+        rew.profit = 0;
+
+
         timer = startTimer;
         MyCharacterController p = GameManager.Instance.thePlayer;
         p.StopWalking();
