@@ -97,7 +97,7 @@ public class Interactor : MonoBehaviour
         if (armed) {
             RectTransform buttontr = (button.transform as RectTransform);
             //buttontr.localPosition = new Vector3(visiblePosX, buttontr.localPosition.y, buttontr.localPosition.z);
-            (button.transform as RectTransform).DOLocalMoveX(visiblePosX, 0.4f); // button.transform.DOMove(200,1); // ok, no tweens for you.
+            (button.transform as RectTransform).DOMoveX(visiblePosX, 0.4f); // button.transform.DOMove(200,1); // ok, no tweens for you.
         }
         // This will end up in tears should we change resolution, but I have no time to understand the damn thing.
         // button woint appear if the plr remain in the collider. we\'ll work on it some day.

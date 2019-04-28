@@ -1490,6 +1490,41 @@ PrefabInstance:
       propertyPath: gm
       value: 
       objectReference: {fileID: 672912562}
+    - target: {fileID: 4155060657097305051, guid: fee68ccbddcf7e94699b67e637052c7e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155060657097305050, guid: fee68ccbddcf7e94699b67e637052c7e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
+      value: 
+      objectReference: {fileID: 7836930529274199558}
+    - target: {fileID: 4155060657097305050, guid: fee68ccbddcf7e94699b67e637052c7e,
+        type: 3}
+      propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_MethodName
+      value: ButtonMashed
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663658704555661247, guid: fee68ccbddcf7e94699b67e637052c7e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663658704555661247, guid: fee68ccbddcf7e94699b67e637052c7e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663658704154769998, guid: fee68ccbddcf7e94699b67e637052c7e,
+        type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5663658704154769998, guid: fee68ccbddcf7e94699b67e637052c7e,
+        type: 3}
+      propertyPath: m_FillCenter
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: fee68ccbddcf7e94699b67e637052c7e, type: 3}
 --- !u!1001 &818492155
