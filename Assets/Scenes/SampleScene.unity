@@ -1416,7 +1416,7 @@ MonoBehaviour:
   mainVCam: {fileID: 46242047}
   thePlayer: {fileID: 0}
   initalAge: 20
-  finalAge: 80
+  finalAge: 21
   timePerYear: 3
   menuStage: 0
   li: {fileID: 2138677393}
@@ -1536,6 +1536,14 @@ MonoBehaviour:
     volume: 1
     pitch: 1
     loop: 0
+    source: {fileID: 0}
+  - name: Music
+    mixerGroup: {fileID: -8255870351192525634, guid: 27312835e6e23ca41a65c936cb160cfb,
+      type: 2}
+    sound: {fileID: 8300000, guid: ee94eea1915ea2949a824f60bc86130c, type: 3}
+    volume: 1
+    pitch: 1
+    loop: 1
     source: {fileID: 0}
 --- !u!1001 &769339913
 PrefabInstance:

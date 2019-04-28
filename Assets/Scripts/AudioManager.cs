@@ -53,7 +53,6 @@ public class AudioManager : MonoBehaviour
         }
     }
 
-
     public void Play(string name)
     {
         Sound s = System.Array.Find(sounds, sound => sound.name == name);
@@ -62,6 +61,7 @@ public class AudioManager : MonoBehaviour
         else
             Debug.Log(name + "does not exist");
     }
+
     public bool isPlaying(string name)
     {
         Sound s = System.Array.Find(sounds, sound => sound.name == name);
@@ -75,7 +75,14 @@ public class AudioManager : MonoBehaviour
             s.source.Stop();
     }
 
+    public void StopMusic()
+    {
+        if (currentMusic != null) {
+            currentMusic.source.Stop();
+            currentMusic.source.time = 0;
+        }
 
+    }
     public void PlayMusic(string name, bool playImmediately = true)
     {
         if (currentMusic != null) {

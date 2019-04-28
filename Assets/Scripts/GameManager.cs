@@ -55,6 +55,8 @@ public class GameManager : MonoBehaviour
 
     private void InitialiseGameManager()
     {
+        AudioManager.Instance.PlayMusic("Music");
+        
         currentScore = new GameReward(0, 0, initalAge);
         gameOver = false;
         foreach (Minigame g in minigames) {
@@ -93,6 +95,7 @@ public class GameManager : MonoBehaviour
                 currentMinigame.DisableMinigameObject();
             }
             thePlayer.Die();
+            AudioManager.Instance.StopMusic();
             Invoke("DisplayCemetary", 2f);
         }
         timeToUpdate -= Time.deltaTime;
