@@ -74,7 +74,7 @@ for Ludum Dare 44";
 
         } else
         {
-
+            text.text = "";
             panel.gameObject.SetActive(false);
         }
     }

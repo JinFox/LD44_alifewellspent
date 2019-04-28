@@ -6,6 +6,7 @@ TagManager:
   tags:
   - interactor
   - bird
+  - food
   layers:
   - Default
   - TransparentFX
