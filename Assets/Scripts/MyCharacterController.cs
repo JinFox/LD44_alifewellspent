@@ -34,10 +34,13 @@ public class MyCharacterController : MonoBehaviour
     }
 
 
-    private void ResetCharacter ()
+    public void ResetCharacter ()
     {
         animator.SetBool("IsDead", false);
         animator.SetBool("IsTyping", false);
+        animator.SetFloat("Speed", 0f);
+        StopMovementSound();
+
     }
     public void StopWalking()
     {
@@ -128,7 +131,8 @@ public class MyCharacterController : MonoBehaviour
     internal void Die()
     {
         dead = true;
-
+        StopWalking();
+        AudioManager.Instance.Play("Creepy");
         animator.SetBool("IsDead", true);
     }
 
@@ -152,7 +156,7 @@ public class MyCharacterController : MonoBehaviour
     }
     public void ShakeHead()
     {
-        animator.SetTrigger("PickObject");
+        animator.SetTrigger("ShakeHead");
         StopMovementSound();
     }
     private void OnValidate()

@@ -1,10 +1,14 @@
-﻿using System;
+﻿using Cinemachine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameManager : MonoBehaviour
 {
+    public CinemachineVirtualCamera mainVCam;
+
     [HideInInspector]
     public static GameManager Instance { get; private set; }
 
@@ -25,10 +29,11 @@ public class GameManager : MonoBehaviour
 
     Minigame currentMinigame;
     private bool aMinigameIsActive;
+    [SerializeField]
+    CemetaryScript cemetaryScript;
 
     public bool InAMinigame()
     {
-        
         return currentMinigame != null;
     }
 
@@ -45,8 +50,13 @@ public class GameManager : MonoBehaviour
     private void Start()
     {
         thePlayer = FindObjectOfType<MyCharacterController>();
-        currentScore = new GameReward(0, 0, initalAge);
+        InitialiseGameManager();
+    }
 
+    private void InitialiseGameManager()
+    {
+        currentScore = new GameReward(0, 0, initalAge);
+        gameOver = false;
         foreach (Minigame g in minigames) {
             g.DisableMinigameObject();
         }
@@ -69,7 +79,7 @@ public class GameManager : MonoBehaviour
 
         if (gameOver) {
             // Debug.Log("Game ended");
-            menuStage = true;
+            //menuStage = true;
             return ;
         }
         UpdateAge();
@@ -79,7 +89,11 @@ public class GameManager : MonoBehaviour
 
         if (this.currentScore.age > finalAge) {
             gameOver = true;
+            if (currentMinigame) {
+                currentMinigame.DisableMinigameObject();
+            }
             thePlayer.Die();
+            Invoke("DisplayCemetary", 2f);
         }
         timeToUpdate -= Time.deltaTime;
         if (timeToUpdate <= 0f) {
@@ -96,6 +110,17 @@ public class GameManager : MonoBehaviour
             EnableNextMinigame();
         }
 
+    }
+    void DisplayCemetary()
+    {
+        Debug.Log("DisplayCemeraty");
+        cemetaryScript.EnableCemetary(currentScore);
+    }
+    public void ReturnToMenu()
+    {
+        InitialiseGameManager();
+        thePlayer.ResetCharacter();
+        SceneManager.LoadScene("SampleScene");
     }
 
     private void UpdateAge()
