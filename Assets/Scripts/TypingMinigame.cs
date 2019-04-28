@@ -182,7 +182,7 @@ public class TypingMinigame : Minigame
 
     public override void DisableMinigameObject()
     {
-
+        GameManager.Instance.thePlayer.StopTyping();
         base.DisableMinigameObject();
         SetInputPanelActive(false);
         input.DeactivateInputField();

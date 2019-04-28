@@ -16,7 +16,7 @@ public class GameManager : MonoBehaviour
     public int finalAge = 80;
     public float timePerYear = 1f;
 
-    public bool menuStage;
+    
 
     [SerializeField] Transform li;
     [SerializeField]
@@ -31,6 +31,7 @@ public class GameManager : MonoBehaviour
         
         return currentMinigame != null;
     }
+    public bool menuStage;
 
 
 

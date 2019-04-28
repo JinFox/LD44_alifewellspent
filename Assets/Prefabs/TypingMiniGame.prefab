@@ -56,11 +56,11 @@ MonoBehaviour:
   timerUI: {fileID: 0}
   minigameDuration: 30
   goodWordProfitAmount:
-    profit: 100
+    profit: 200
     enjoyment: 0
     age: -1
   badWordProfitAmount:
-    profit: -50
+    profit: -20
     enjoyment: 0
     age: 0
 --- !u!1001 &8188727220510017090
@@ -78,7 +78,7 @@ PrefabInstance:
     - target: {fileID: 882444878046304218, guid: 23d85f1a8c793f141a99f46a8df671ee,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 7.74
       objectReference: {fileID: 0}
     - target: {fileID: 882444878046304218, guid: 23d85f1a8c793f141a99f46a8df671ee,
         type: 3}
@@ -88,7 +88,7 @@ PrefabInstance:
     - target: {fileID: 882444878046304218, guid: 23d85f1a8c793f141a99f46a8df671ee,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0
+      value: 5.85
       objectReference: {fileID: 0}
     - target: {fileID: 882444878046304218, guid: 23d85f1a8c793f141a99f46a8df671ee,
         type: 3}

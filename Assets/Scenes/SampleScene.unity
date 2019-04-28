@@ -649,7 +649,7 @@ PrefabInstance:
         type: 3}
       propertyPath: button
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1977011688}
     - target: {fileID: 9050870712067314072, guid: e35107ea0c2f0214d85c348ae46f9e69,
         type: 3}
       propertyPath: m_LocalPosition.z
@@ -1080,22 +1080,17 @@ PrefabInstance:
         type: 3}
       propertyPath: button
       value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 9050870712067314072, guid: 058dd427c5611124e8decc5a319912c6,
-        type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7.74
-      objectReference: {fileID: 0}
-    - target: {fileID: 9050870712067314072, guid: 058dd427c5611124e8decc5a319912c6,
-        type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 5.85
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1977011688}
     - target: {fileID: 3163133440641216411, guid: 058dd427c5611124e8decc5a319912c6,
         type: 3}
       propertyPath: typingUIPanel
       value: 
       objectReference: {fileID: 818492160}
+    - target: {fileID: 3163133440641216411, guid: 058dd427c5611124e8decc5a319912c6,
+        type: 3}
+      propertyPath: typedWordListUI
+      value: 
+      objectReference: {fileID: 818492157}
     - target: {fileID: 3163133440641216411, guid: 058dd427c5611124e8decc5a319912c6,
         type: 3}
       propertyPath: wordToTypeUI
@@ -1111,11 +1106,6 @@ PrefabInstance:
       propertyPath: timerUI
       value: 
       objectReference: {fileID: 818492156}
-    - target: {fileID: 3163133440641216411, guid: 058dd427c5611124e8decc5a319912c6,
-        type: 3}
-      propertyPath: typedWordListUI
-      value: 
-      objectReference: {fileID: 818492157}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 058dd427c5611124e8decc5a319912c6, type: 3}
 --- !u!4 &602253976 stripped
@@ -1207,11 +1197,11 @@ MonoBehaviour:
   initalAge: 20
   finalAge: 80
   timePerYear: 2
-  menuStage: 0
   li: {fileID: 2138677393}
   minigames:
   - {fileID: 77102906}
   - {fileID: 1478840472}
+  menuStage: 0
 --- !u!4 &672912563
 Transform:
   m_ObjectHideFlags: 0
@@ -1268,6 +1258,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: CanvasGUI
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155060657514360711, guid: fee68ccbddcf7e94699b67e637052c7e,
+        type: 3}
+      propertyPath: m_TagString
+      value: MainGUI
       objectReference: {fileID: 0}
     - target: {fileID: 4155060657514360707, guid: fee68ccbddcf7e94699b67e637052c7e,
         type: 3}
@@ -1379,7 +1374,26 @@ PrefabInstance:
       propertyPath: gm
       value: 
       objectReference: {fileID: 672912562}
-    m_RemovedComponents: []
+    - target: {fileID: 4155060657097305051, guid: fee68ccbddcf7e94699b67e637052c7e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 9.200073
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155060657097305051, guid: fee68ccbddcf7e94699b67e637052c7e,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 1.000061
+      objectReference: {fileID: 0}
+    - target: {fileID: 4155060657514360704, guid: fee68ccbddcf7e94699b67e637052c7e,
+        type: 3}
+      propertyPath: m_PixelPerfect
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 5663658704718933681, guid: fee68ccbddcf7e94699b67e637052c7e, type: 3}
+    - {fileID: 5663658704218754894, guid: fee68ccbddcf7e94699b67e637052c7e, type: 3}
+    - {fileID: 5663658704785523581, guid: fee68ccbddcf7e94699b67e637052c7e, type: 3}
+    - {fileID: 4155060657097305062, guid: fee68ccbddcf7e94699b67e637052c7e, type: 3}
   m_SourcePrefab: {fileID: 100100000, guid: fee68ccbddcf7e94699b67e637052c7e, type: 3}
 --- !u!1001 &818492155
 PrefabInstance:
@@ -3334,6 +3348,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 64085d67be9cdca49be7ba9e66ea38ae, type: 3}
+--- !u!224 &1977011688 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 4155060657097305051, guid: fee68ccbddcf7e94699b67e637052c7e,
+    type: 3}
+  m_PrefabInstance: {fileID: 769339913}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2054582311
 GameObject:
   m_ObjectHideFlags: 0

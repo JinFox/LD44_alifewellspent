@@ -8,7 +8,6 @@ public class Interactor : MonoBehaviour
     private float hiddenPosX;
     private float visiblePosX;
     public float rotatingSpeed = 30f;
-
     
     [SerializeField] bool armed;
     [SerializeField] Transform dollar;
@@ -21,23 +20,41 @@ public class Interactor : MonoBehaviour
     private float startGreen = 1f;
     private float startRed = 0.2f;
     private float startBlue = 0.2f;
-    
 
+    private RectTransform _canvas;
+    private RectTransform buttonTrans;
 
+    float GetHiddenPosX()
+    {
+        if (!_canvas)
+            _canvas = GameObject.FindGameObjectWithTag("MainGUI").transform as RectTransform;
+        return 100f;
+    }
+    float GetVisiblePosX()
+    {
+        if (!_canvas)
+            _canvas = GameObject.FindGameObjectWithTag("MainGUI").transform as RectTransform;
+        return -200f;
+    }
     // Start is called before the first frame update
+    private void Awake()
+    {
+        buttonTrans = (button.transform as RectTransform);
+    }
     void Start()
     {
-        hiddenPosX = Screen.width + 100f; // changed from 1024f due to my screen not compatible
-        visiblePosX = hiddenPosX - 300f;
-
+        
         DisArm();
         Arm();
        // Invoke("Arm", 5f);
     }
 
     // Update is called once per frame
+    public float positionX = 0f;
     void Update()
     {
+
+
         if (armed)
         {
             // DecayDollar(); 
@@ -45,7 +62,8 @@ public class Interactor : MonoBehaviour
 
             dollar.transform.Rotate(Vector3.up, -rotatingSpeed * Time.deltaTime);
 
-            if (Input.GetKeyDown(KeyCode.Space)) ButtonMashed();
+            if (Input.GetKeyDown(KeyCode.Space))
+                ButtonMashed();
             
 
         }
@@ -95,9 +113,10 @@ public class Interactor : MonoBehaviour
         playerInRange = true;
 
         if (armed) {
-            RectTransform buttontr = (button.transform as RectTransform);
+
+            buttonTrans.DOAnchorPosX(GetVisiblePosX(), 0.2f);
             //buttontr.localPosition = new Vector3(visiblePosX, buttontr.localPosition.y, buttontr.localPosition.z);
-            (button.transform as RectTransform).DOLocalMoveX(visiblePosX, 0.4f); // button.transform.DOMove(200,1); // ok, no tweens for you.
+            //DOMoveX(GetVisiblePosX(), 0.4f); // button.transform.DOMove(200,1); // ok, no tweens for you.
         }
         // This will end up in tears should we change resolution, but I have no time to understand the damn thing.
         // button woint appear if the plr remain in the collider. we\'ll work on it some day.
@@ -114,8 +133,8 @@ public class Interactor : MonoBehaviour
 
     void ButtonBeGone()
     {
-        DOTween.Kill(button.transform);
-        button.transform.DOMoveX(hiddenPosX, 0.4f); 
+        DOTween.Kill(buttonTrans);
+        buttonTrans.DOAnchorPosX(GetHiddenPosX(), 0.2f);
 
     }
 
@@ -126,7 +145,8 @@ public class Interactor : MonoBehaviour
         Debug.Log(dollar.GetComponent<Renderer>().material.GetColor("_Color"));
         Color c = dollar.GetComponent<Renderer>().material.GetColor("_Color");
         dollar.GetComponent<Renderer>().material.SetColor("_Color",c - new Color(decayRate * startRed, decayRate * startGreen, decayRate * startBlue, 0f));
-        if (c == new Color(0f, 0f, 0f)) DollarLost();
+        if (c == new Color(0f, 0f, 0f))
+            DollarLost();
     }
 
     void RejuvenateDollar()
