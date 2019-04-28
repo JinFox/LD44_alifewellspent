@@ -762,8 +762,8 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 827847584}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &268540899
-MeshCollider:
+--- !u!135 &268540899
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -772,10 +772,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Radius: 0.12298077
+  m_Center: {x: 0, y: 1.15, z: 0}
 --- !u!4 &269564755 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2914252036580884870, guid: 4c202738462eaeb46a1eb5b4ec4e46f1,
@@ -965,8 +964,8 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1101925266}
   m_PrefabAsset: {fileID: 0}
---- !u!64 &476997322
-MeshCollider:
+--- !u!135 &476997322
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
@@ -975,10 +974,9 @@ MeshCollider:
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
-  serializedVersion: 3
-  m_Convex: 0
-  m_CookingOptions: 14
-  m_Mesh: {fileID: 0}
+  serializedVersion: 2
+  m_Radius: 0.12298077
+  m_Center: {x: 0, y: 1.15, z: 0}
 --- !u!1001 &486254834
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3045,6 +3043,25 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 16b04c085eae5ac40867843b64ab957f, type: 3}
+--- !u!1 &862916422 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: -927199367670048503, guid: 16b04c085eae5ac40867843b64ab957f,
+    type: 3}
+  m_PrefabInstance: {fileID: 862916421}
+  m_PrefabAsset: {fileID: 0}
+--- !u!135 &862916423
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 862916422}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 0.12298077
+  m_Center: {x: 0, y: 1.15, z: 0}
 --- !u!4 &940418518 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1922022787851149305, guid: 951466766cb070048829ad7a9183952a,
@@ -5856,6 +5873,21 @@ PrefabInstance:
       propertyPath: m_Name
       value: BirdwatchMiniGame
       objectReference: {fileID: 0}
+    - target: {fileID: 8988981723111359150, guid: a75bb29881078c045a1e453b99bd1b7e,
+        type: 3}
+      propertyPath: mainCam
+      value: 
+      objectReference: {fileID: 46242047}
+    - target: {fileID: 8988981723111359150, guid: a75bb29881078c045a1e453b99bd1b7e,
+        type: 3}
+      propertyPath: sky0
+      value: 
+      objectReference: {fileID: 534040738}
+    - target: {fileID: 8988981723111359150, guid: a75bb29881078c045a1e453b99bd1b7e,
+        type: 3}
+      propertyPath: sky1
+      value: 
+      objectReference: {fileID: 1255646712}
     - target: {fileID: 82298127234933037, guid: a75bb29881078c045a1e453b99bd1b7e,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -5911,21 +5943,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 8988981723111359150, guid: a75bb29881078c045a1e453b99bd1b7e,
-        type: 3}
-      propertyPath: mainCam
-      value: 
-      objectReference: {fileID: 46242047}
-    - target: {fileID: 8988981723111359150, guid: a75bb29881078c045a1e453b99bd1b7e,
-        type: 3}
-      propertyPath: sky0
-      value: 
-      objectReference: {fileID: 534040738}
-    - target: {fileID: 8988981723111359150, guid: a75bb29881078c045a1e453b99bd1b7e,
-        type: 3}
-      propertyPath: sky1
-      value: 
-      objectReference: {fileID: 1255646712}
     - target: {fileID: 82298127198359088, guid: a75bb29881078c045a1e453b99bd1b7e,
         type: 3}
       propertyPath: button
