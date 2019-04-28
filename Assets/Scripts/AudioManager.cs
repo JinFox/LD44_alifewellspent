@@ -60,6 +60,20 @@ public class AudioManager : MonoBehaviour
         Sound s = System.Array.Find(sounds, sound => sound.name == name);
         if (s != null)
             s.source.Play();
+        else
+            Debug.Log(name + "does not exist");
+    }
+    public bool isPlaying(string name)
+    {
+        Sound s = System.Array.Find(sounds, sound => sound.name == name);
+        return s != null ? s.source.isPlaying : false;
+    }
+
+    public void Stop(string name)
+    {
+        Sound s = System.Array.Find(sounds, sound => sound.name == name);
+        if (s != null)
+            s.source.Stop();
     }
 
 

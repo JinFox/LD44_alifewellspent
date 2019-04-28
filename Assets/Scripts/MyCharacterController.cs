@@ -43,13 +43,31 @@ public class MyCharacterController : MonoBehaviour
     {
         animator.SetFloat("Speed", 0f);
         movement = Vector3.zero;
+        //StopMovementSound();
         _rb.velocity = Vector3.zero;
+    }
+
+    void PlayFootStepSound()
+    {
+        if (isRunning) {
+            AudioManager.Instance.Stop("Walk");
+            if (!AudioManager.Instance.isPlaying("Run")) {
+                AudioManager.Instance.Play("Run");
+            }
+
+        } else {
+            AudioManager.Instance.Stop("Run");
+            if (!AudioManager.Instance.isPlaying("Walk")) {
+                AudioManager.Instance.Play("Walk");
+            }
+
+        }
     }
 
     // Update is called once per frame
     public void UpdateCharacter()
     {
-        if (GameManager.Instance.InAMinigame()) {
+        if (GameManager.Instance.InAMinigame() || GameManager.Instance.menuStage) {
             animator.SetFloat("Speed", 0f);
             return ;
         }
@@ -74,7 +92,7 @@ public class MyCharacterController : MonoBehaviour
             isRunning = false;
         }
 
-        if (!gm.menuStage) _rb.velocity = movement * Time.deltaTime * speed + new Vector3(0f, _rb.velocity.y, 0f);
+        _rb.velocity = movement * Time.deltaTime * speed + new Vector3(0f, _rb.velocity.y, 0f);
 
     }
 
@@ -83,7 +101,19 @@ public class MyCharacterController : MonoBehaviour
         animator.SetFloat("Speed", movement.normalized.magnitude * (isRunning ? 1f : .5f));
         if (_rb.velocity.magnitude > 0.2f) {
             LookToward(movement);
+            
         }
+        if (movement.sqrMagnitude > 0.01f)
+            PlayFootStepSound();
+        else {
+            StopMovementSound();
+        }
+    }
+
+    private void StopMovementSound()
+    {
+        AudioManager.Instance.Stop("Walk");
+        AudioManager.Instance.Stop("Run");
     }
 
     private void LookToward(Vector3 direction)
@@ -104,6 +134,7 @@ public class MyCharacterController : MonoBehaviour
             return;
         LookToward((emitter.position - transform.position).normalized);
         animator.SetBool("IsTyping", true);
+        StopMovementSound();
     }
     internal void StopTyping()
     {
@@ -113,10 +144,12 @@ public class MyCharacterController : MonoBehaviour
     public void PickupObject()
     {
         animator.SetTrigger("PickObject");
+        StopMovementSound();
     }
     public void ShakeHead()
     {
         animator.SetTrigger("PickObject");
+        StopMovementSound();
     }
     private void OnValidate()
     {
