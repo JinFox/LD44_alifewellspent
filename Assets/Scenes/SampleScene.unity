@@ -1190,7 +1190,7 @@ PrefabInstance:
         type: 3}
       propertyPath: button
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 1697133726}
     - target: {fileID: 9050870712067314072, guid: 058dd427c5611124e8decc5a319912c6,
         type: 3}
       propertyPath: m_LocalPosition.x
