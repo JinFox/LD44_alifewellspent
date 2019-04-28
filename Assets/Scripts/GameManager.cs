@@ -13,7 +13,7 @@ public class GameManager : MonoBehaviour
     GameReward currentScore;
 
     public int initalAge = 20;
-    public int finalAge = 22;
+    public int finalAge = 100;
     public float timePerYear = 1f;
 
     public bool menuStage;
@@ -28,6 +28,7 @@ public class GameManager : MonoBehaviour
 
     public bool InAMinigame()
     {
+        
         return currentMinigame != null;
     }
 

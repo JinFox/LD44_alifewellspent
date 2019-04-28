@@ -14,7 +14,7 @@ public class MenuManager : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hiddenPosX = 1024f + 100f;
+        hiddenPosX = Screen.width + 100f; // changed from 1024f due to my screen not compatible
         visiblePosX = hiddenPosX - 300f;
         isActive = false;
     }
@@ -31,11 +31,13 @@ public class MenuManager : MonoBehaviour
     {
         menu.transform.DOMoveX(visiblePosX, 0.4f);
         isActive = true;
+
     }
     void Disappear()
     {
         isActive = false;
-        DOTween.Kill(menu.transform);
+        // DOTween.Kill(menu.transform);
         menu.transform.DOMoveX(hiddenPosX, 0.4f);
+        Debug.Log("Disappearing Menu");
     }
 }

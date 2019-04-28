@@ -22,7 +22,7 @@ public class Interactor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hiddenPosX = 1024f + 100f;
+        hiddenPosX = Screen.width + 100f; // changed from 1024f due to my screen not compatible
         visiblePosX = hiddenPosX - 300f;
         DisArm();
         Arm();
