@@ -13,6 +13,7 @@ public class BirdWatchingMinigame : Minigame
     [SerializeField] Camera bwCam;
     [SerializeField] Transform sky0;
     [SerializeField] Transform sky1;
+    [SerializeField] Transform birds;
 
 
     public override void LaunchMinigame()
@@ -27,6 +28,7 @@ public class BirdWatchingMinigame : Minigame
         bwCam.enabled = true;
         sky0.gameObject.SetActive(false);
         sky1.gameObject.SetActive(true);
+        birds.gameObject.SetActive(true);
 
     }
 
@@ -51,5 +53,6 @@ public class BirdWatchingMinigame : Minigame
         base.DisableMinigameObject();
         sky1.gameObject.SetActive(false);
         sky0.gameObject.SetActive(true);
+        birds.gameObject.SetActive(false);
     }
 }
