@@ -43,7 +43,21 @@ public class BirdWatchingMinigame : Minigame
     public override void updateMinigame()
     {
         timer -= Time.deltaTime;
-
+        // Debug.DrawRay(Camera.main.transform.position, Input.mousePosition, Color.green, 1);
+        
+        RaycastHit hit;
+        Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+        if (Physics.Raycast(ray, out hit, 20.0f))
+        {
+                Debug.Log("hit " + hit.transform.name);
+                // hit.transform.position += Vector3.right * speed * time.deltaTime; // << declare public speed and set it in inspector
+                if (hit.transform.CompareTag("bird"))
+            {
+                AudioManager.Instance.Play("Success");
+            }
+                
+        }
+        
         // this minigame dont allow walking so we don't update 
         // GameManager.Instance.thePlayer.UpdateCharacter();
 
@@ -52,6 +66,8 @@ public class BirdWatchingMinigame : Minigame
             GameManager.Instance.OnMinigameFinished(this);
         }
     }
+
+
 
     public override void DisableMinigameObject()
     {
