@@ -48,16 +48,23 @@ public class MenuManager : MonoBehaviour
 
     public void Quit()
     {
+        if (!GameManager.Instance.menuStage)
+            return;
         Application.Quit();
     }
     public void StartGame()
     {
+        if (!GameManager.Instance.menuStage)
+            return;
         gm.StartGame();
     }
     public void Understand()
     {
-        if (!panel.gameObject.active)
+        if (!GameManager.Instance.menuStage)
+            return;
+        if (!panel.gameObject.activeSelf)
         {
+            Debug.Log("Summoning the 'about' panel");
             text.text = @"A Life Well Spent
 
 In order to live a fulfilling life, you must obtain
@@ -74,7 +81,7 @@ for Ludum Dare 44";
 
         } else
         {
-
+            text.text = "";
             panel.gameObject.SetActive(false);
         }
     }

@@ -18,6 +18,10 @@ public class TypingMinigame : Minigame
         "workload",
         "Tables",
         "Presentation",
+        "Anxiety",
+        "Stress",
+        "Deadline",
+        "process",
     };
 
     [SerializeField]

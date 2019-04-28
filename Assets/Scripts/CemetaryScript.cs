@@ -57,6 +57,7 @@ public class CemetaryScript : MonoBehaviour
         gameObject.SetActive(true);
         flowerRoot.gameObject.SetActive(true);
         cemetaryCam.enabled = true;
+        GameManager.Instance.mainVCam.enabled = false;
 
         DisplayCorrectTombstone(scores.profit);
         DisplayCorrectFlowers(scores.enjoyment);

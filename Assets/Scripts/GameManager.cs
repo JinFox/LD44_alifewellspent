@@ -114,6 +114,7 @@ public class GameManager : MonoBehaviour
     void DisplayCemetary()
     {
         Debug.Log("DisplayCemeraty");
+        thePlayer.gameObject.SetActive(false);
         cemetaryScript.EnableCemetary(currentScore);
     }
     public void ReturnToMenu()
