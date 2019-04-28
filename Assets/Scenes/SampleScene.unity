@@ -1235,7 +1235,7 @@ MonoBehaviour:
   mainCam: {fileID: 1687258584}
   bwCam: {fileID: 1698175489}
   sky0: {fileID: 534040738}
-  sky1: {fileID: 0}
+  sky1: {fileID: 1255646712}
 --- !u!4 &506799964 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 2914252036580884870, guid: 4c202738462eaeb46a1eb5b4ec4e46f1,
@@ -1543,6 +1543,7 @@ MonoBehaviour:
   minigames:
   - {fileID: 77102906}
   - {fileID: 1478840472}
+  - {fileID: 505871887}
 --- !u!4 &672912563
 Transform:
   m_ObjectHideFlags: 0
@@ -3206,7 +3207,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &1161180281
 Transform:
   m_ObjectHideFlags: 0
