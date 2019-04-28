@@ -34,16 +34,17 @@ public class MyCharacterController : MonoBehaviour
     }
 
 
-    private void ResetCharacter ()
+    public void ResetCharacter ()
     {
         animator.SetBool("IsDead", false);
-        animator.SetBool("IsTyping", false);
+        StopTyping();
+        StopWalking();
     }
     public void StopWalking()
     {
         animator.SetFloat("Speed", 0f);
         movement = Vector3.zero;
-        //StopMovementSound();
+        StopMovementSound();
         _rb.velocity = Vector3.zero;
     }
 
@@ -67,7 +68,8 @@ public class MyCharacterController : MonoBehaviour
     // Update is called once per frame
     public void UpdateCharacter()
     {
-        if (GameManager.Instance.InAMinigame() || GameManager.Instance.menuStage) {
+        
+        if (GameManager.Instance.InAMinigame() || GameManager.Instance.menuStage || dead) {
             animator.SetFloat("Speed", 0f);
             return ;
         }
@@ -128,7 +130,9 @@ public class MyCharacterController : MonoBehaviour
     internal void Die()
     {
         dead = true;
-
+        StopTyping();
+        StopWalking();
+        AudioManager.Instance.Play("Creepy");
         animator.SetBool("IsDead", true);
     }
 
@@ -152,7 +156,7 @@ public class MyCharacterController : MonoBehaviour
     }
     public void ShakeHead()
     {
-        animator.SetTrigger("PickObject");
+        animator.SetTrigger("ShakeHead");
         StopMovementSound();
     }
     private void OnValidate()

@@ -47,7 +47,7 @@ public class FoodMinigame : Minigame
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
         if (cooldown < 0 && (Physics.Raycast(ray, out hit, 10.0f)))
         {
-                Debug.Log("hit " + hit.transform.name);
+            //    Debug.Log("hit " + hit.transform.name);
                 // hit.transform.position += Vector3.right * speed * time.deltaTime; // << declare public speed and set it in inspector
                 if (hit.transform.CompareTag("food"))
             {
