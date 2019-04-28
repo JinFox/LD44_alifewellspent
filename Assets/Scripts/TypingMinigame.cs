@@ -160,6 +160,7 @@ public class TypingMinigame : Minigame
     {
         if (timer <= 0) { // winning condition has been reached
             Debug.Log("Minigame finished");
+            GameManager.Instance.thePlayer.StopTyping();
             AudioManager.Instance.Play("Victory");
             GameManager.Instance.OnMinigameFinished(this);
         }
