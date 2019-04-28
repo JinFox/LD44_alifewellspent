@@ -187,7 +187,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1922022787851149306}
-  m_LocalRotation: {x: -0, y: -0.09410257, z: -0, w: 0.99556255}
+  m_LocalRotation: {x: 0, y: -0.09409965, z: 0, w: 0.9955628}
   m_LocalPosition: {x: 2.18, y: 0, z: 3.55}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
@@ -211,8 +211,9 @@ MonoBehaviour:
   interactor: {fileID: 1626775258116126865}
   TheReward:
     profit: 0
-    enjoyment: 0
+    enjoyment: 1000
     age: 0
+  timerUI: {fileID: 0}
   startTimer: 30
   mainCam: {fileID: 0}
   bwCam: {fileID: 1922022786723754577}
@@ -296,11 +297,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 882444878046304220, guid: 23d85f1a8c793f141a99f46a8df671ee,
         type: 3}
-      propertyPath: button
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 882444878046304220, guid: 23d85f1a8c793f141a99f46a8df671ee,
-        type: 3}
       propertyPath: linkedGame
       value: 
       objectReference: {fileID: 1922022787851149304}
@@ -316,16 +312,6 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 882444878046304219, guid: 23d85f1a8c793f141a99f46a8df671ee,
         type: 3}
-      propertyPath: m_Center.x
-      value: 0.110890664
-      objectReference: {fileID: 0}
-    - target: {fileID: 882444878046304219, guid: 23d85f1a8c793f141a99f46a8df671ee,
-        type: 3}
-      propertyPath: m_Center.z
-      value: -0.071922116
-      objectReference: {fileID: 0}
-    - target: {fileID: 882444878046304219, guid: 23d85f1a8c793f141a99f46a8df671ee,
-        type: 3}
       propertyPath: m_Size.y
       value: 3.3430958
       objectReference: {fileID: 0}
@@ -336,8 +322,18 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 882444878046304219, guid: 23d85f1a8c793f141a99f46a8df671ee,
         type: 3}
+      propertyPath: m_Center.x
+      value: 0.110890664
+      objectReference: {fileID: 0}
+    - target: {fileID: 882444878046304219, guid: 23d85f1a8c793f141a99f46a8df671ee,
+        type: 3}
       propertyPath: m_Center.y
       value: 1.1715478
+      objectReference: {fileID: 0}
+    - target: {fileID: 882444878046304219, guid: 23d85f1a8c793f141a99f46a8df671ee,
+        type: 3}
+      propertyPath: m_Center.z
+      value: -0.071922116
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23d85f1a8c793f141a99f46a8df671ee, type: 3}

@@ -104,9 +104,11 @@ public class TypingMinigame : Minigame
         if (v) { // make panel appear
             rt.localPosition = new Vector3(0f, rt.localPosition.y);
             typingUIPanel.SetActive(true);
+            timerUI.gameObject.SetActive(true);
             //rt.localPosition = new Vector3(-1024f, rt.localPosition.y);
         } else { // make panel disappear
             typingUIPanel.SetActive(false);
+            timerUI.gameObject.SetActive(false);
             //rt.localPosition = new Vector3(-1024f, rt.localPosition.y);
         }
         

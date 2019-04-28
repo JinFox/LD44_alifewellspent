@@ -6,7 +6,7 @@ using UnityEngine.UI;
 
 public class FoodMinigame : Minigame
 {
-
+    public Text timerUI;
     public float startTimer = 30f;
     float timer;
     [SerializeField] Cinemachine.CinemachineVirtualCamera mainCam;
@@ -34,7 +34,13 @@ public class FoodMinigame : Minigame
         {
             child.gameObject.SetActive(true);
         }
+        SetInputPanelActive(true);
 
+    }
+
+    void UpdateTimerUI()
+    {
+        timerUI.text = String.Format("{0:0.#}s remaining to type", timer);
     }
 
     // called every frame
@@ -57,22 +63,32 @@ public class FoodMinigame : Minigame
             }
                 
         }
-        
+
         // this minigame dont allow walking so we don't update 
         // GameManager.Instance.thePlayer.UpdateCharacter();
-
+        UpdateTimerUI();
+       
         if (timer <= 0) { // winning condition has been reached
             Debug.Log("FoodMinigame finished");
             GameManager.Instance.OnMinigameFinished(this);
         }
     }
 
-
+    private void SetInputPanelActive(bool v)
+    {
+        if (v) { // make panel appear
+            timerUI.gameObject.SetActive(true);
+        }
+        else { // make panel disappear
+            timerUI.gameObject.SetActive(false);
+        }
+    }
 
     public override void DisableMinigameObject()
     {
         mainCam.enabled = true;
         bwCam.enabled = false;
+        SetInputPanelActive(false);
         base.DisableMinigameObject();
 
         birds.gameObject.SetActive(false);
