@@ -58,6 +58,7 @@ public class MenuManager : MonoBehaviour
     {
         if (!panel.gameObject.active)
         {
+            Debug.Log("Summoning the 'about' panel");
             text.text = @"A Life Well Spent
 
 In order to live a fulfilling life, you must obtain

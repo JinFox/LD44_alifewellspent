@@ -13,7 +13,7 @@ public class FoodMinigame : Minigame
     // [SerializeField] Camera bwCam;
     [SerializeField] Cinemachine.CinemachineVirtualCamera bwCam;
     [SerializeField] Transform birds;
-    float cooldown = 5f;
+    float cooldown = 2f; // initial delay
 
     public override void LaunchMinigame()
     { 
@@ -45,7 +45,7 @@ public class FoodMinigame : Minigame
         cooldown -= Time.deltaTime;
         RaycastHit hit;
         Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
-        if (cooldown < 0 && (Physics.Raycast(ray, out hit, 10.0f))
+        if (cooldown < 0 && (Physics.Raycast(ray, out hit, 10.0f)))
         {
                 Debug.Log("hit " + hit.transform.name);
                 // hit.transform.position += Vector3.right * speed * time.deltaTime; // << declare public speed and set it in inspector
@@ -53,7 +53,7 @@ public class FoodMinigame : Minigame
             {
                 AudioManager.Instance.Play("Success");
                 hit.transform.gameObject.SetActive(false);
-                cooldown = 3f;
+                cooldown = UnityEngine.Random.Range(0.5f, 1.0f);
             }
                 
         }
