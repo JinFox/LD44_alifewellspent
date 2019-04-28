@@ -84,7 +84,7 @@ public class MyCharacterController : MonoBehaviour
         movement = (hori * right) + (vert * forward);
 
 
-        if (Input.GetButton("Run")) {
+        if (!Input.GetButton("Run")) {
             movement *= runSpeedMult;
             isRunning = true;
         }
