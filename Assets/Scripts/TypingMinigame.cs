@@ -138,15 +138,17 @@ public class TypingMinigame : Minigame
 
             if (entered == currentWordToType.ToLower()) {
                 AddGoodWordTyped(currentWordToType);
-                
+                AudioManager.Instance.Play("Success");
             }
             else if (currentWordToType.StartsWith(entered, StringComparison.InvariantCultureIgnoreCase)) {
                 // continue
                 // PLay good sound
+                AudioManager.Instance.Play("Typewriter");
             }
             else {
                 // bad word
                 // play bad sound
+                AudioManager.Instance.Play("Error");
                 BlockInputTemporally();
                 AddBadWordTyped(entered);
             }
@@ -158,6 +160,7 @@ public class TypingMinigame : Minigame
     {
         if (timer <= 0) { // winning condition has been reached
             Debug.Log("Minigame finished");
+            AudioManager.Instance.Play("Victory");
             GameManager.Instance.OnMinigameFinished(this);
         }
 
@@ -188,6 +191,5 @@ public class TypingMinigame : Minigame
         input.DeactivateInputField();
         input.onValueChanged.RemoveListener(onValueChangedOnInput);
         input.onEndEdit.RemoveListener(onInputSubmit);
-
     }
 }
