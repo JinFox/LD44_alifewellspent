@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
-using System;
 
 public class MenuManager : MonoBehaviour
 {
@@ -17,21 +16,11 @@ public class MenuManager : MonoBehaviour
     private bool isActive;
 
 
-    RectTransform menuTransform;
-
-    float GetHiddenPosX()
-    {
-        return 100f;
-    }
-    float GetVisiblePosX()
-    {
-       
-        return -200f;
-    }
     // Start is called before the first frame update
     void Start()
     {
-        menuTransform = menu.transform as RectTransform;
+        hiddenPosX = Screen.width + 100f; // changed from 1024f due to my screen not compatible
+        visiblePosX = hiddenPosX - 300f;
         isActive = false;
     }
 
@@ -45,8 +34,7 @@ public class MenuManager : MonoBehaviour
 
     void Appear()
     {
-        menu.gameObject.SetActive(true);
-        menuTransform.DOAnchorPosX(GetVisiblePosX(), 0.2f);
+        menu.transform.DOMoveX(visiblePosX, 0.4f);
         isActive = true;
 
     }
@@ -54,14 +42,8 @@ public class MenuManager : MonoBehaviour
     {
         isActive = false;
         // DOTween.Kill(menu.transform);
-
-        menuTransform.DOAnchorPosX(GetHiddenPosX(), 0.2f).OnComplete(DisableMenuElements);
+        menu.transform.DOMoveX(hiddenPosX, 0.4f);
         Debug.Log("Disappearing Menu");
-    }
-
-    private void DisableMenuElements()
-    {
-        menu.gameObject.SetActive(false);
     }
 
     public void Quit()
@@ -70,12 +52,11 @@ public class MenuManager : MonoBehaviour
     }
     public void StartGame()
     {
-        panel.gameObject.SetActive(false);
         gm.StartGame();
     }
     public void Understand()
     {
-        if (!panel.gameObject.activeSelf)
+        if (!panel.gameObject.active)
         {
             text.text = @"A Life Well Spent
 

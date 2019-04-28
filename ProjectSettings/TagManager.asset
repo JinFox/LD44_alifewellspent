@@ -5,7 +5,6 @@ TagManager:
   serializedVersion: 2
   tags:
   - interactor
-  - MainGUI
   layers:
   - Default
   - TransparentFX

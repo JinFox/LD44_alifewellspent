@@ -67,7 +67,7 @@ public class MyCharacterController : MonoBehaviour
     // Update is called once per frame
     public void UpdateCharacter()
     {
-        if (GameManager.Instance.InAMinigame() || GameManager.Instance.menuStage) {
+        if (GameManager.Instance.InAMinigame()) {
             animator.SetFloat("Speed", 0f);
             return ;
         }
