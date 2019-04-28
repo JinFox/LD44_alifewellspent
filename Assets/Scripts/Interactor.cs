@@ -22,8 +22,10 @@ public class Interactor : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        hiddenPosX = 1024f + 100f;
+
+        hiddenPosX = 512f + 100f;
         visiblePosX = hiddenPosX - 300f;
+
         DisArm();
         Arm();
        // Invoke("Arm", 5f);
@@ -82,7 +84,11 @@ public class Interactor : MonoBehaviour
         // I should be checking player's tag here.
         playerInRange = true;
 
-        if (armed) button.transform.DOMoveX(visiblePosX, 0.4f); // button.transform.DOMove(200,1); // ok, no tweens for you.
+        if (armed) {
+            RectTransform buttontr = (button.transform as RectTransform);
+            //buttontr.localPosition = new Vector3(visiblePosX, buttontr.localPosition.y, buttontr.localPosition.z);
+            (button.transform as RectTransform).DOLocalMoveX(visiblePosX, 0.4f); // button.transform.DOMove(200,1); // ok, no tweens for you.
+        }
         // This will end up in tears should we change resolution, but I have no time to understand the damn thing.
         // button woint appear if the plr remain in the collider. we\'ll work on it some day.
         Debug.Log("Collided with " + other.tag);
@@ -99,7 +105,7 @@ public class Interactor : MonoBehaviour
     void ButtonBeGone()
     {
         DOTween.Kill(button.transform);
-        button.transform.DOMoveX(hiddenPosX, 0.4f); // yeehaw!
+        (button.transform as RectTransform).DOLocalMoveX(hiddenPosX, 0.4f); // yeehaw!
 
     }
 }

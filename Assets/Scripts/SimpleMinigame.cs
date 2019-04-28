@@ -16,8 +16,10 @@ public class SimpleMinigame : Minigame
         base.LaunchMinigame(); // this stays
         // INITIALISATION
         timer = startTimer;
-
-        GameManager.Instance.thePlayer.StopWalking(); // stopping the walking animation
+        MyCharacterController p = GameManager.Instance.thePlayer;
+        p.StopWalking();
+        p.PickupObject();
+       
     }
 
     // called every frame

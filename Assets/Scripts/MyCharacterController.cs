@@ -33,8 +33,8 @@ public class MyCharacterController : MonoBehaviour
 
     private void ResetCharacter ()
     {
-        animator.SetBool("isDead", false);
-        animator.SetBool("isTyping", false);
+        animator.SetBool("IsDead", false);
+        animator.SetBool("IsTyping", false);
     }
     public void StopWalking()
     {
@@ -92,7 +92,7 @@ public class MyCharacterController : MonoBehaviour
     {
         dead = true;
 
-        animator.SetBool("isDead", true);
+        animator.SetBool("IsDead", true);
     }
 
     internal void TypeOnKeyboard(Transform emitter)
@@ -100,13 +100,21 @@ public class MyCharacterController : MonoBehaviour
         if (dead)
             return;
         LookToward((emitter.position - transform.position).normalized);
-        animator.SetBool("isTyping", true);
+        animator.SetBool("IsTyping", true);
     }
     internal void StopTyping()
     {
-        animator.SetBool("isTyping", false);
+        animator.SetBool("IsTyping", false);
     }
 
+    public void PickupObject()
+    {
+        animator.SetTrigger("PickObject");
+    }
+    public void ShakeHead()
+    {
+        animator.SetTrigger("PickObject");
+    }
     private void OnValidate()
     {
         if (!_cam) {

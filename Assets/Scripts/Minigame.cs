@@ -16,12 +16,19 @@ public struct GameReward
         this.enjoyment = enjoyment;
         this.age = age;
     }
+
+    public void Add(GameReward other)
+    {
+        this.profit += other.profit;
+        this.enjoyment += other.enjoyment;
+        this.age += other.age;
+    }
 }
 
 public abstract class Minigame : MonoBehaviour
 {
     public Interactor               interactor;
-    public GameReward               theReward;
+    public GameReward TheReward;
 
     public virtual void LaunchMinigame()
     {

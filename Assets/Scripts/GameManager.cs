@@ -113,9 +113,9 @@ public class GameManager : MonoBehaviour
 
     public void OnMinigameFinished(Minigame minigame)
     {
-        this.currentScore.age += minigame.theReward.age;
-        this.currentScore.profit += minigame.theReward.profit;
-        this.currentScore.enjoyment += minigame.theReward.enjoyment;
+        this.currentScore.age += minigame.TheReward.age;
+        this.currentScore.profit += minigame.TheReward.profit;
+        this.currentScore.enjoyment += minigame.TheReward.enjoyment;
         UpdateScores();
         currentMinigame.DisableMinigameObject();
         currentMinigame = null;

@@ -9,9 +9,9 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9050870712089214595}
-  - component: {fileID: 9050870712089214594}
+  - component: {fileID: 3163133440641216411}
   m_Layer: 0
-  m_Name: SimpleMinigame
+  m_Name: TypingMiniGame
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &9050870712089214594
+--- !u!114 &3163133440641216411
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -41,15 +41,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 9050870712089214592}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 89afef1f79e58bd408511b363ff4c3e1, type: 3}
+  m_Script: {fileID: 11500000, guid: aca87db69890cb74e8b4147dd05669e8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   interactor: {fileID: 9050870712067314078}
   TheReward:
-    profit: 100
+    profit: 0
     enjoyment: 0
     age: 0
-  startTimer: 3
+  typingUIPanel: {fileID: 0}
+  typedWordListUI: {fileID: 0}
+  wordToTypeUI: {fileID: 0}
+  input: {fileID: 0}
+  timerUI: {fileID: 0}
+  minigameDuration: 30
+  goodWordProfitAmount:
+    profit: 100
+    enjoyment: 0
+    age: -1
+  badWordProfitAmount:
+    profit: -50
+    enjoyment: 0
+    age: 0
 --- !u!1001 &8188727220510017090
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -156,7 +169,7 @@ PrefabInstance:
         type: 3}
       propertyPath: linkedGame
       value: 
-      objectReference: {fileID: 9050870712089214594}
+      objectReference: {fileID: 3163133440641216411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23d85f1a8c793f141a99f46a8df671ee, type: 3}
 --- !u!4 &9050870712067314072 stripped
