@@ -65,6 +65,7 @@ public class GameManager : MonoBehaviour
             g.DisableMinigameObject();
         }
         UpdateScores();
+        cemetaryScript.DisableCemetary();
         menuStage = true;
     }
 
@@ -80,7 +81,10 @@ public class GameManager : MonoBehaviour
 
     void Update()
     {
-
+        if (Input.GetKeyDown(KeyCode.Escape)) {
+            Application.Quit();
+            return;
+        }
         if (gameOver) {
             // Debug.Log("Game ended");
             //menuStage = true;
@@ -120,7 +124,7 @@ public class GameManager : MonoBehaviour
     {
         Debug.Log("DisplayCemeraty");
         thePlayer.gameObject.SetActive(false);
-        cemetaryScript.EnableCemetary(currentScore);
+        cemetaryScript.EnableCemetary(currentScore, objectiveScore);
     }
     public void ReturnToMenu()
     {
@@ -154,9 +158,11 @@ public class GameManager : MonoBehaviour
         this.currentScore.enjoyment += minigame.TheReward.enjoyment;
         UpdateScores();
         currentMinigame.DisableMinigameObject();
+        var save = currentMinigame;
         currentMinigame = null;
+        
         aMinigameIsActive = false;
-        EnableNextMinigame();
+        EnableNextMinigame(save);
     }
 
     private void EnableNextMinigame(Minigame toAvoid = null)

@@ -59,7 +59,7 @@ public class TypingMinigame : Minigame
     void AddBadWordTyped(string typedWord)
     {
         typedWords += "<color=\"red\">Bad Input: " + typedWord + "</color> -$"+ Mathf.Abs(badWordProfitAmount.profit) + "\n";
-        TheReward.Add(goodWordProfitAmount);
+        TheReward.Add(badWordProfitAmount);
 
         typedWordListUI.text = typedWords;
         currentWordToType = null;
@@ -69,7 +69,7 @@ public class TypingMinigame : Minigame
     void AddGoodWordTyped(string typedWord)
     {
         typedWords += "<color=\"green\">" + typedWord + "</color> +$" + Mathf.Abs(goodWordProfitAmount.profit) + "\n";
-
+        TheReward.Add(goodWordProfitAmount);
         typedWordListUI.text = typedWords;
         currentWordToType = null;
         DrawNewWordToType();

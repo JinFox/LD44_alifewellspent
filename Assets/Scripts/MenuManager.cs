@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using DG.Tweening;
 using UnityEngine.UI;
+using System;
 
 public class MenuManager : MonoBehaviour
 {
@@ -20,7 +21,7 @@ public class MenuManager : MonoBehaviour
     void Start()
     {
         buttonsTrans = menu as RectTransform;
-        hiddenPosX = 300f; // changed from 1024f due to my screen not compatible
+        hiddenPosX = 500f; // changed from 1024f due to my screen not compatible
         visiblePosX = -220f;
 
         isActive = false;
@@ -37,7 +38,7 @@ public class MenuManager : MonoBehaviour
     void Appear()
     {
         DOTween.Kill(buttonsTrans);
-
+        buttonsTrans.gameObject.SetActive(true);
         buttonsTrans.DOAnchorPosX(visiblePosX, 0.3f);
 
         isActive = true;
@@ -48,9 +49,14 @@ public class MenuManager : MonoBehaviour
         isActive = false;
         DOTween.Kill(buttonsTrans);
 
-        buttonsTrans.DOAnchorPosX(hiddenPosX, 0.1f);
+        buttonsTrans.DOAnchorPosX(hiddenPosX, 0.1f).OnComplete(DisablePanel);
 
         Debug.Log("Disappearing Menu");
+    }
+
+    private void DisablePanel()
+    {
+        buttonsTrans.gameObject.SetActive(false);
     }
 
     public void Quit()

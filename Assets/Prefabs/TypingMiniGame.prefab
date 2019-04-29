@@ -54,13 +54,13 @@ MonoBehaviour:
   wordToTypeUI: {fileID: 0}
   input: {fileID: 0}
   timerUI: {fileID: 0}
-  minigameDuration: 30
+  minigameDuration: 20
   goodWordProfitAmount:
     profit: 1000
-    enjoyment: 0
-    age: -1
+    enjoyment: -100
+    age: 0
   badWordProfitAmount:
-    profit: -100
+    profit: -500
     enjoyment: 0
     age: 0
 --- !u!1001 &8188727220510017090
@@ -140,11 +140,6 @@ PrefabInstance:
       propertyPath: m_LocalScale.z
       value: 0.40000072
       objectReference: {fileID: 0}
-    - target: {fileID: 882444878046304220, guid: 23d85f1a8c793f141a99f46a8df671ee,
-        type: 3}
-      propertyPath: linkedGame
-      value: 
-      objectReference: {fileID: 3163133440641216411}
     - target: {fileID: 882444878046304219, guid: 23d85f1a8c793f141a99f46a8df671ee,
         type: 3}
       propertyPath: m_Size.y
@@ -170,6 +165,11 @@ PrefabInstance:
       propertyPath: m_Center.z
       value: -0.071922116
       objectReference: {fileID: 0}
+    - target: {fileID: 882444878046304220, guid: 23d85f1a8c793f141a99f46a8df671ee,
+        type: 3}
+      propertyPath: linkedGame
+      value: 
+      objectReference: {fileID: 3163133440641216411}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 23d85f1a8c793f141a99f46a8df671ee, type: 3}
 --- !u!4 &9050870712067314072 stripped

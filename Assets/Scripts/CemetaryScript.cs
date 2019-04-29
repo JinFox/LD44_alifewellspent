@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using Cinemachine;
+using UnityEngine.UI;
 
 public class CemetaryScript : MonoBehaviour
 {
@@ -9,6 +10,13 @@ public class CemetaryScript : MonoBehaviour
 
     public Transform flowerRoot;
     List<Transform> flowers;
+
+    [SerializeField] public string profitPanelPrefix;
+    [SerializeField] public Text profitPanel;
+    [SerializeField] public string funPanelPrefix;
+    [SerializeField] public Text funPanel;
+    [SerializeField] GameObject deadCanvas;
+
 
     public GameObject[] tombstones;
 
@@ -23,6 +31,11 @@ public class CemetaryScript : MonoBehaviour
         
     }
     
+    void UpdatePanels (GameReward scores)
+    {
+       profitPanel.text = profitPanelPrefix + scores.profit;
+       funPanel.text = funPanelPrefix + scores.enjoyment;  
+    }
 
     private void DisplayCorrectFlowers(float scoreEnjoy)
     {
@@ -52,20 +65,34 @@ public class CemetaryScript : MonoBehaviour
         tombstones[indexToEnable].SetActive(true);
     }
 
-    public void EnableCemetary(GameReward scores)
+    public void EnableCemetary(GameReward scores, GameReward objectives)
     {
         gameObject.SetActive(true);
+
         flowerRoot.gameObject.SetActive(true);
         cemetaryCam.enabled = true;
+        deadCanvas.SetActive(true);
         GameManager.Instance.mainVCam.enabled = false;
 
-        DisplayCorrectTombstone(scores.profit);
-        DisplayCorrectFlowers(scores.enjoyment);
+        UpdatePanels(scores);
+        //will set the value between 0 and 1 depending if the objective is reached
+         DisplayCorrectTombstone((float)Mathf.Clamp(scores.profit, 0, objectives.profit) / objectives.profit);
+        DisplayCorrectFlowers((float)Mathf.Clamp(scores.enjoyment, 0, objectives.enjoyment) / objectives.enjoyment);
        
     }
     public void DisableCemetary()
     {
         flowerRoot.gameObject.SetActive(false);
+        foreach (GameObject tomb in tombstones) {
+            tomb.SetActive(false);
+        }
+        deadCanvas.SetActive(false);
+
+    }
+
+    public void RestartGame()
+    {
+        GameManager.Instance.ReturnToMenu();
     }
     
 }
