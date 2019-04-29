@@ -2021,6 +2021,11 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 95
       objectReference: {fileID: 0}
+    - target: {fileID: 5663658705886849631, guid: fee68ccbddcf7e94699b67e637052c7e,
+        type: 3}
+      propertyPath: m_Text
+      value: QUIT
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 5663658704218754894, guid: fee68ccbddcf7e94699b67e637052c7e, type: 3}
     - {fileID: 4155060657097305062, guid: fee68ccbddcf7e94699b67e637052c7e, type: 3}
