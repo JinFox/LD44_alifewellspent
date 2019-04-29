@@ -21,14 +21,15 @@ public class Interactor : MonoBehaviour
     private float startGreen = 1f;
     private float startRed = 0.2f;
     private float startBlue = 0.2f;
-    
 
+    RectTransform ButtonTrans;
 
     // Start is called before the first frame update
     void Start()
     {
-        hiddenPosX = Screen.width + 100f; // changed from 1024f due to my screen not compatible
-        visiblePosX = hiddenPosX - 300f;
+        ButtonTrans = button as RectTransform;
+        hiddenPosX = 300f; // changed from 1024f due to my screen not compatible
+        visiblePosX = -220f;
 
         DisArm();
         Arm();
@@ -95,9 +96,11 @@ public class Interactor : MonoBehaviour
         playerInRange = true;
 
         if (armed) {
-            RectTransform buttontr = (button.transform as RectTransform);
+            DOTween.Kill(ButtonTrans);
             //buttontr.localPosition = new Vector3(visiblePosX, buttontr.localPosition.y, buttontr.localPosition.z);
-            (button.transform as RectTransform).DOMoveX(visiblePosX, 0.4f); // button.transform.DOMove(200,1); // ok, no tweens for you.
+            //(button.transform as RectTransform).DOMoveX(visiblePosX, 0.4f); // button.transform.DOMove(200,1); // ok, no tweens for you.
+            ButtonTrans.DOAnchorPosX(visiblePosX, 0.3f);
+
         }
         // This will end up in tears should we change resolution, but I have no time to understand the damn thing.
         // button woint appear if the plr remain in the collider. we\'ll work on it some day.
@@ -114,9 +117,8 @@ public class Interactor : MonoBehaviour
 
     void ButtonBeGone()
     {
-        DOTween.Kill(button.transform);
-        button.transform.DOMoveX(hiddenPosX, 0.4f); 
-
+        DOTween.Kill(ButtonTrans);
+        ButtonTrans.DOAnchorPosX(hiddenPosX, 0.3f);
     }
 
     public void SetDecayRate(float dr)    {        decayRate = dr;    }

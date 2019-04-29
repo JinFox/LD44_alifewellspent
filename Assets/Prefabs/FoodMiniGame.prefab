@@ -211,13 +211,17 @@ MonoBehaviour:
   interactor: {fileID: 1626775258116126865}
   TheReward:
     profit: 0
-    enjoyment: 1000
+    enjoyment: 0
     age: 0
   timerUI: {fileID: 0}
   startTimer: 30
   mainCam: {fileID: 0}
   bwCam: {fileID: 1922022786723754577}
   birds: {fileID: 0}
+  eatSomethingReward:
+    profit: -50
+    enjoyment: 100
+    age: 0
 --- !u!1001 &1922022786989551437
 PrefabInstance:
   m_ObjectHideFlags: 0

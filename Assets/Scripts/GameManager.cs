@@ -15,6 +15,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector]
     public MyCharacterController thePlayer;
     GameReward currentScore;
+    
 
     public int initalAge = 20;
     public int finalAge = 80;
@@ -31,7 +32,8 @@ public class GameManager : MonoBehaviour
     private bool aMinigameIsActive;
     [SerializeField]
     CemetaryScript cemetaryScript;
-
+    [SerializeField]
+    GameReward objectiveScore;
     public bool InAMinigame()
     {
         return currentMinigame != null;
@@ -142,6 +144,7 @@ public class GameManager : MonoBehaviour
     {
         ScorePanel.Instance.SetAge(this.currentScore.age);
         ScorePanel.Instance.SetProfit(this.currentScore.profit);
+        ScorePanel.Instance.SetFun(this.currentScore.enjoyment);
     }
 
     public void OnMinigameFinished(Minigame minigame)

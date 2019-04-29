@@ -9,6 +9,9 @@ public class ScorePanel : MonoBehaviour
     [SerializeField] public Text profitPanel;
     [SerializeField] public string agePanelPrefix;
     [SerializeField] public Text agePanel;
+    [SerializeField] public string funPanelPrefix;
+    [SerializeField] public Text funPanel;
+
     [HideInInspector]
     public static ScorePanel Instance { private set; get; }
 
@@ -22,8 +25,12 @@ public class ScorePanel : MonoBehaviour
     {
         profitPanel.text = profitPanelPrefix + profit;
     }
+    public void SetFun(int fun)
+    {
+        funPanel.text = funPanelPrefix + fun;
+    }
 
-   
+
     public void SetAge(int age)
     {
         agePanel.text = agePanelPrefix + age;

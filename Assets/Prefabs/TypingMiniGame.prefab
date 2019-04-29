@@ -56,11 +56,11 @@ MonoBehaviour:
   timerUI: {fileID: 0}
   minigameDuration: 30
   goodWordProfitAmount:
-    profit: 100
+    profit: 1000
     enjoyment: 0
     age: -1
   badWordProfitAmount:
-    profit: -50
+    profit: -100
     enjoyment: 0
     age: 0
 --- !u!1001 &8188727220510017090

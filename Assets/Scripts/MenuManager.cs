@@ -14,13 +14,15 @@ public class MenuManager : MonoBehaviour
     private float hiddenPosX;
     private float visiblePosX;
     private bool isActive;
-
+    RectTransform buttonsTrans;
 
     // Start is called before the first frame update
     void Start()
     {
-        hiddenPosX = Screen.width + 100f; // changed from 1024f due to my screen not compatible
-        visiblePosX = hiddenPosX - 300f;
+        buttonsTrans = menu as RectTransform;
+        hiddenPosX = 300f; // changed from 1024f due to my screen not compatible
+        visiblePosX = -220f;
+
         isActive = false;
     }
 
@@ -34,15 +36,20 @@ public class MenuManager : MonoBehaviour
 
     void Appear()
     {
-        menu.transform.DOMoveX(visiblePosX, 0.4f);
+        DOTween.Kill(buttonsTrans);
+
+        buttonsTrans.DOAnchorPosX(visiblePosX, 0.3f);
+
         isActive = true;
 
     }
     void Disappear()
     {
         isActive = false;
-        // DOTween.Kill(menu.transform);
-        menu.transform.DOMoveX(hiddenPosX, 0.4f);
+        DOTween.Kill(buttonsTrans);
+
+        buttonsTrans.DOAnchorPosX(hiddenPosX, 0.1f);
+
         Debug.Log("Disappearing Menu");
     }
 

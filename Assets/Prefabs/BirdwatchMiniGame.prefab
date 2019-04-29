@@ -50,20 +50,25 @@ MonoBehaviour:
   TheReward:
     profit: 0
     enjoyment: 0
-    age: 0
+    age: -2
+  timerUI: {fileID: 0}
   startTimer: 10
   mainCam: {fileID: 0}
   bwCam: {fileID: 8988981722713786516}
   sky0: {fileID: 0}
   sky1: {fileID: 0}
   birds: {fileID: 8988981722424592600}
---- !u!136 &8988981721846158886
+  foundABirdReward:
+    profit: 0
+    enjoyment: 50
+    age: 0
+--- !u!136 &8988981722180002896
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125524244721003407}
+  m_GameObject: {fileID: 1125524243234232642}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -71,13 +76,13 @@ CapsuleCollider:
   m_Height: 3.8331559
   m_Direction: 2
   m_Center: {x: 0, y: 0, z: 0}
---- !u!136 &8988981721878650605
+--- !u!136 &8988981722490047701
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125524245179147637}
+  m_GameObject: {fileID: 1125524243320793747}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -113,13 +118,27 @@ CapsuleCollider:
   m_Height: 1.68
   m_Direction: 2
   m_Center: {x: -0.5, y: 0.12, z: 0}
---- !u!136 &8988981722180002896
+--- !u!136 &8988981721846158886
 CapsuleCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125524243234232642}
+  m_GameObject: {fileID: 1125524244721003407}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  m_Radius: 0.62834775
+  m_Height: 3.8331559
+  m_Direction: 2
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!136 &8988981721878650605
+CapsuleCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1125524245179147637}
   m_Material: {fileID: 0}
   m_IsTrigger: 0
   m_Enabled: 1
@@ -180,20 +199,6 @@ Animation:
   m_PlayAutomatically: 1
   m_AnimatePhysics: 0
   m_CullingType: 0
---- !u!136 &8988981722490047701
-CapsuleCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1125524243320793747}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  m_Radius: 0.62834775
-  m_Height: 3.8331559
-  m_Direction: 2
-  m_Center: {x: 0, y: 0, z: 0}
 --- !u!1 &8988981722713786517
 GameObject:
   m_ObjectHideFlags: 0
